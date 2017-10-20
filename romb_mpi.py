@@ -1,5 +1,4 @@
-#trapParallel_2.py
-#example to run: mpiexec -n 4 python26 trapParallel_2.py 0.0 1.0 10000
+# parallel version of our Romberg implementation in question 1
 from mpi4py import MPI
 import numpy as np
 import time
@@ -110,7 +109,7 @@ comm = MPI.COMM_WORLD
 rank = comm.Get_rank()
 size = comm.Get_size()
 
-# h is the step size the separates each integration interval
+# h is the step size the separates each integration interval that each core will do
 h = (kmax-kmin)/size
 rtol = 1.e-8; R = 1.e-1
 
